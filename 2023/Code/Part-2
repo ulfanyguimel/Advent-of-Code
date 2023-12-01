@@ -1,0 +1,28 @@
+file_path = r"C:\Users\Ulfany-LP\Documents\Code of Advent 2023\Day1\data\calibration_input.txt"
+
+with open(file_path, 'r') as f:
+    input_data = f.readlines()
+
+stringNums = {
+    "one": 'o1e',
+    "two": 't2o',
+    "three": 't3e',
+    "four": 'f4r',
+    "five": 'f5e',
+    "six": 's6x',
+    "seven": 's7n',
+    "eight": 'e8t',
+    "nine": 'n9e'
+}
+
+cleaned_input = []
+for line in input_data:
+    for key, value in stringNums.items():
+        line = line.replace(key, value)
+    cleaned_input.append(line.strip('\n'))
+
+output = []
+for line in cleaned_input:
+    output.append("".join(c for c in line if not c.isalpha()))
+
+print(sum(int(line[0] + line[-1]) for line in output))
