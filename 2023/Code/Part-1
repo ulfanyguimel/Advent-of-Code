@@ -1,1 +1,11 @@
+file_path = r"C:\Users\Ulfany-LP\Documents\Code of Advent 2023\Day1\data\calibration_input.txt"
+
+with open(file_path, 'r') as f:
+    input_data = f.readlines()
+
+output = []
+for line in input_data:
+    output.append("".join(c for c in line if not c.isalpha() and c != '\n'))
+
+print(sum(int(line[0] + line[-1]) for line in output))
 
